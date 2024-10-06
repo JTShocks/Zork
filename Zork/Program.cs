@@ -13,5 +13,10 @@ namespace Zork
             Console.WriteLine("Welcome to Zork!");
             //InitializeRoomDescriptions();
         }
+
+
+
+
+        private static Commands ToCommand(string commandString) => Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
     }
 }

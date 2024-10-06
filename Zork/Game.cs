@@ -12,17 +12,18 @@ namespace Zork
     {
         [JsonIgnore]
         public static Game Instance { get; private set; }
-        //public World World { get; set; }
+        public World World { get; set; }
 
-        //[JsonIgnore]
-       //public Player Player { get; private set; }
+        [JsonIgnore]
+        public Player Player { get; private set; }
 
         [JsonIgnore]
         public bool IsRunning { get; }
-        /*public Game(World world, Player player)
+        public Game(World world, Player player)
         {
-
+            World = world;
+            Player = player;
         }
-        */
+        
     }
 }

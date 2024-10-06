@@ -22,15 +22,11 @@ namespace Zork
         }
         static void Main(string[] args)
         {
+
             Console.WriteLine("Welcome to Zork!");
-            Room previousRoom = null;
-            //InitializeRoomDescriptions();
+
         }
 
-
-
-
-        private static Commands ToCommand(string commandString) => Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
 
         private static void InitialiseRoomDescriptions(string roomsFilename) =>
         

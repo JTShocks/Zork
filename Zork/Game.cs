@@ -36,9 +36,15 @@ namespace Zork
 
 
 
+
+
+
+
+
         public static void Start(string gameFileName)
         {
-            if(!File.Exists(gameFileName))
+           
+            if (!File.Exists(gameFileName))
             {
                 throw new FileNotFoundException("Expected file.", gameFileName);
             }
@@ -47,14 +53,14 @@ namespace Zork
             {
                 Instance = Load(gameFileName);
                 Instance.LoadCommands();
-                Instance.LoadScripts();
+                //Instance.LoadScripts();
                 Instance.DisplayWelcomeMessage();
                 Instance.Run();
             }
         }
         public void Run()
         {
-            IsRunning = true;
+            mIsRunning = true;
             Room previousRoom = null;
             while (mIsRunning)
             {
@@ -156,7 +162,7 @@ namespace Zork
 
         private void DisplayWelcomeMessage() => Console.WriteLine(WelcomeMessage);
 
-        public static readonly Random Random;
+        public static readonly Random Random = new Random();
         private static readonly string ScriptDirectory = "Scripts";
         private static readonly string ScriptFileExtension = "*.csx";
 

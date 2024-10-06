@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using Zork;
 
-string[] responses = new string[]
+string[] response = new string[]
 {
     "Good day.",
-    "Nice weather we've been having lately.",
-    "Nice to see you."
-}
+        "Nice weather we've been having lately.",
+        "Nice to see you."
+};
 
 var command = new Command("HELLO", new string[] { "HELLO", "HI", "HOWDY" },
     (game, commandContext) =>
@@ -16,3 +16,4 @@ var command = new Command("HELLO", new string[] { "HELLO", "HI", "HOWDY" },
     });
 
 Game.Instance.CommandManager.AddCommand(command);
+

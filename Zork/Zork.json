@@ -4,39 +4,11 @@
     "StartingLocation": "West of House",
     "Rooms": [
       {
-        "Name": "Rocky Trail",
-        "Description": "You are on a rock-strewn trail.",
-        "Neighbors": {
-          "North": "North of House",
-          "South": "South of House",
-          "West": "Forest 1"
-        }
-      },
-      {
         "Name": "South of House",
         "Description": "You are facing the south side of a white house.There is no door here, and all the windows are barred.",
         "Neighbors": {
-          "North": "North of House",
-          "South": "South of House",
-          "West": "Forest 1"
-        }
-      },
-      {
-        "Name": "Canyon View",
-        "Description": "You are at the top of the Great Canyon on its south wall.",
-        "Neighbors": {
-          "North": "North of House",
-          "South": "South of House",
-          "West": "Forest 1"
-        }
-      },
-      {
-        "Name": "Forest 1",
-        "Description": "This is a forest, with trees in all directions around you.",
-        "Neighbors": {
-          "North": "North of House",
-          "South": "South of House",
-          "West": "Forest 1"
+          "East": "Behind House",
+          "West": "West of House"
         }
       },
       {
@@ -54,36 +26,54 @@
         "Neighbors": {
           "North": "North of House",
           "South": "South of House",
-          "West": "Forest 1"
-        }
-      },
-      {
-        "Name": "Dense Woods",
-        "Description": "This is a dimly lit forest, with large trees all around. To the east, there appears to be sunlight.",
-        "Neighbors": {
-          "North": "North of House",
-          "South": "South of House",
-          "West": "Forest 1"
+          "East": "Clearing"
         }
       },
       {
         "Name": "North of House",
         "Description": "You are facing the north side of a white house. There is no door here, and all the windows are barred.",
         "Neighbors": {
-          "North": "North of House",
-          "South": "South of House",
-          "West": "Forest 1"
+          "North": "Forest 2",
+          "East": "Behind House",
+          "West": "West of House"
         }
       },
+      {
+        "Name": "Forest 1",
+        "LookName": "Forest",
+        "Description": "This is a forest, with trees in all directions around you.",
+        "Neighbors": {
+          "South": "Forest 3",
+          "East": "West of House"
+        }
+      },
+      {
+        "Name": "Forest 2",
+        "Description": "This is a forest, with trees in all directions around you.",
+        "Neighbors": {
+          "South": "Clearing",
+          "East": "Clearing"
+        }
+      },
+      {
+        "Name": "Forest 3",
+        "Description": "This is a dimly lit forest, with large trees all around. To the east, there appears to be sunlight.",
+        "Neighbors": {
+          "North": "South of House",
+          "East": "Clearning"
+        }
+      },
+
       {
         "Name": "Clearning",
         "Description": "You are in a clearing, with a forest surrounding you on the west and south.",
         "Neighbors": {
-          "North": "North of House",
-          "South": "South of House",
-          "West": "Forest 1"
+          "South": "Forest 2",
+          "West": "Forest 3"
         }
+
       }
+
     ]
   }
 }

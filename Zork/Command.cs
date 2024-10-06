@@ -15,10 +15,10 @@ namespace Zork
         public Command(string name, string verb, Action<Game, CommandContext> action) : this(name, new string[] { verb }, action)
         { }
 
-        public Command(string name, IEnumerable<string> verb, Action<Game, CommandContext> action)
+        public Command(string name, IEnumerable<string> verbs, Action<Game, CommandContext> action)
         {
             Name = name;
-            Verbs = Verbs.ToArray();
+            Verbs = verbs.ToArray();
             Action = action;
         }
 

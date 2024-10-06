@@ -1,7 +1,9 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Immutable;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -11,12 +13,15 @@ namespace Zork
 {
 	public class Room : IEquatable<Room>
 	{
+
+		[JsonIgnore]
+		Room neighbor;
 		[JsonProperty(Order = 1)]
-		public string Name { get; }
+		public string Name { get; private set; }
 		[JsonProperty(Order = 2)]
-		public string Description { get; set; }
+		public string Description { get; private set; }
 		[JsonProperty(PropertyName = "Neighbors", Order = 3)]
-		private Dictionary<Directions, string> NeightborNames { get; set; }
+		private Dictionary<Directions, string> NeighborNames { get; set; }
 
 		[JsonIgnore]
 		public IReadOnlyDictionary<Directions, Room> Neighbors { get; private set; }
@@ -39,10 +44,11 @@ namespace Zork
         public bool Equals(Room other) => this == other;
 		public override string ToString() => Name;
 		public override int GetHashCode() => Name.GetHashCode();
-		public void UpdateNeighbors(World world) => Neighbors = (from entry in NeightborNames
-																 let room = world.RoomsByName.GetValueOrDefault(entry.Value)
-																 where room != null
-																 select (Direction: entry.Key, Room: room)).ToDictionary(pair => pair.Direction, pair => pair.Room);
+		public void UpdateNeighbors(World world) => Neighbors = (from entry in NeighborNames
+																 let room = neighbor 
+                                                                 where world.RoomsByName.TryGetValue(entry.Value, out neighbor) && room != null
+																 select (Direction: entry.Key, Room: room))
+																.ToDictionary(pair => pair.Direction, pair => pair.Room);
 
 
 	}

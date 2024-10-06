@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
+using System;
 using Newtonsoft.Json;
 
 
@@ -6,6 +8,7 @@ namespace Zork
 {
     public class Player
     {
+        public int Moves;
         public World World { get; }
         [JsonIgnore]
         public Room Location { get; private set; }
@@ -18,7 +21,18 @@ namespace Zork
             }
             set
             {
-                Location = World?.RoomsByName.GetValueOrDefault(value);
+
+                if (World.RoomsByName.TryGetValue(value, out Room room))
+                {
+                    if (room != null)
+                    {
+                        Location = room;
+                    }
+                    
+                }
+                
+                
+                
             }
         }
 

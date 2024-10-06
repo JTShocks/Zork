@@ -10,29 +10,14 @@ namespace Zork
 {
     class Program
     {
-        private static (int Row, int Column) Location;
-
-        private static Room[,] Rooms;
-        public static Room CurrentRoom
-        {
-            get
-            {
-                return Rooms[Location.Row, Location.Column];
-            }
-        }
         static void Main(string[] args)
         {
             const string defaultGameFilename = "Zork.json";
             string gameFilename = (args.Length > 0 ? args[(int)CommandLineArguments.GameFilename]  : defaultGameFilename);
-            Console.WriteLine("Welcome to Zork!");
+            Game.Start(gameFilename);
+            Console.WriteLine("Thank you for playing!");
 
         }
-
-
-        private static void InitialiseRoomDescriptions(string roomsFilename) =>
-        
-            Rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomsFilename));
-
         private enum CommandLineArguments
         {
             GameFilename = 0
